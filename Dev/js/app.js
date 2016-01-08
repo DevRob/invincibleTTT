@@ -48,7 +48,7 @@ function startGame() {
     refreshCounter(winnerCounter, checkWin);
     game.drawMove();
 
-    if (checkWin != null) {
+    if (checkWin !== null) {
       game.drawMove();
       if (checkWin != 3) {
         game.drawWin();
@@ -128,11 +128,13 @@ function loadSettings() {
     firstMove: checkSettings.firstMove
   };
 
-  for (option in checkSettings) {
+	for (var option in checkSettings) {
     // Check if game options properly set.
-    if (!checkSettings[option]) {
-      alert("Please set: " + option);
-      return;
+    if (checkSettings.hasOwnProperty(option)) {
+      if (!checkSettings[option]) {
+        alert("Please set: " + option);
+        return;
+      }
     }
   }
   return settings;

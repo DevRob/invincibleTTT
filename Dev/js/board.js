@@ -36,8 +36,8 @@ Board.prototype.getEmptySquares = function() {
       }
     }
   }
-  return emptySquares
-}
+  return emptySquares;
+};
 
 Board.prototype.move = function(pos, player) {
   /**
@@ -49,7 +49,7 @@ Board.prototype.move = function(pos, player) {
   if (this.squares[row][col] === null) {
     this.squares[row][col] = player;
   }
-}
+};
 
 Board.prototype.checkWin = function() {
   /**
@@ -92,12 +92,12 @@ Board.prototype.checkWin = function() {
   * Iterate through the possible winning combinations and check
   *    if they match winning conditions.
   */
-  for (var i = 0, lines = self.lines, len = self.lines.length; i < len; i++) {
-    var lineSet = new Set(lines[i]);
+  for (var idx = 0, lines = self.lines, leng = self.lines.length; idx < leng; idx++) {
+    var lineSet = new Set(lines[idx]);
     if (lineSet.size === 1) { // Set.size = 1 ->> elements of line are the same.
       if (!lineSet.has(null)) {
-        self.winnerLine = self.lines.indexOf(lines[i]);
-        if (lines[i][0] === 0) {
+        self.winnerLine = self.lines.indexOf(lines[idx]);
+        if (lines[idx][0] === 0) {
           self.gameStatus = 1;
           break;
         } else {
@@ -105,12 +105,12 @@ Board.prototype.checkWin = function() {
           break;
         }
       }
-    } else if (self.getEmptySquares().length == 0) {
+    } else if (self.getEmptySquares().length === 0) {
       self.gameStatus = 3;
     }
   }
   return self.gameStatus;
-}
+};
 
 Board.prototype.logBoard = function() {
   /**
@@ -122,7 +122,7 @@ Board.prototype.logBoard = function() {
   console.log("-------------------");
   squares.forEach(function(row) {
     row.forEach(function(cell) {
-      if (cell == 0) {
+      if (cell === 0) {
         cells.push("O");
       } else if (cell == 1) {
         cells.push("X");
@@ -134,7 +134,7 @@ Board.prototype.logBoard = function() {
     cells = [];
   });
   console.log("-------------------");
-}
+};
 
 function getSquares(squares) {
   /*

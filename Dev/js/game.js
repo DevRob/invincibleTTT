@@ -11,9 +11,9 @@ var Player = function(player) {
   function pickName(name) {
     // Return a rndom name from the list if player name not specified.
     if (!name) {
-      return Math.randomChoice(["bob", "tom", "selly", "katy", "zorg"])
+      return Math.randomChoice(["bob", "tom", "selly", "katy", "zorg"]);
     }
-    return name
+    return name;
   }
 };
 
@@ -31,7 +31,7 @@ var Game = function(settings) {
   this.frameSetup();
   this.firstMove = settings.firstMove;
   this.actualPlayer = this.setFirstPlayer(this.firstMove);
-}
+};
 
 Game.prototype.setFirstPlayer = function() {
   /**
@@ -62,7 +62,7 @@ Game.prototype.frameSetup = function() {
       lineEnd.reverse();
     }
   }
-}
+};
 
 Game.prototype.drawMove = function () {
   /**
@@ -124,8 +124,8 @@ Game.prototype.drawMove = function () {
        0: [[winLineIdx, 0],[winLineIdx, dim-1]],
        1: [[0, winLineIdx.mod(dim)],[dim-1, winLineIdx.mod(dim)]],
        2: [[(winLineIdx-2*dim)*(dim-1), 0],[((winLineIdx-2*dim+1).mod(2))*(dim-1), dim-1]]
-     }
-     return calc[parseInt(winLineIdx / dim)]
+     };
+     return calc[parseInt(winLineIdx / dim)];
    }
  };
 
@@ -135,7 +135,7 @@ Game.prototype.drawMove = function () {
     *    the coordinates on the canvas of the center of the grid.
     */
    return this.squareSize * (idx + 0.5);
- }
+ };
 
  Game.prototype.getSquare = function(x, y) {
    /**
@@ -143,7 +143,7 @@ Game.prototype.drawMove = function () {
     */
     return {row: parseInt(y / this.squareSize),
             col: parseInt(x / this.squareSize)};
- }
+ };
 
  Game.prototype.resetGame = function() {
    /**

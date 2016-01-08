@@ -13,7 +13,7 @@ function score(board, player, depth) {
   * This is the scoring function wich called on the bottom of the tree.
   */
   var checkWin = board.checkWin();
-  var score = Math.pow(board.dim, 2) + 1
+  var score = Math.pow(board.dim, 2) + 1;
   if (checkWin) {
     if (checkWin == 3) {
       return {score: 0};
@@ -31,7 +31,7 @@ function minMaxMove(board, player, depth) {
   /**
   * Mini-max algorithm to generate possible moves and pick the best move.
   */
-  depth += 1
+  depth += 1;
 
   var moves = [];
   var empties = board.getEmptySquares();
@@ -51,7 +51,7 @@ function minMaxMove(board, player, depth) {
       return a.score - b.score;
     });
 
-    if (player == 0) {
+    if (player === 0) {
       return moves[0];
     } else if (player == 1) {
       return moves.last();
@@ -74,7 +74,7 @@ function mcTrial(board, player) {
    *    alternating between players.
    */
    var currentPlayer = switchPlayer(player);
-   while (board.getEmptySquares().length !== 0 && board.checkWin() == null) {
+   while (board.getEmptySquares().length !== 0 && board.checkWin() === null) {
     square = Math.randomChoice(board.getEmptySquares());
     currentPlayer = switchPlayer(currentPlayer);
     board.move(square[0], square[1], currentPlayer);
