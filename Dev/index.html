@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <title>invincibleTTT</title>
+</head>
+<body >
+  <div id="ingameUI" style="display: none;">
+    <div class="counter-container">
+      <div class="counter">
+        <strong class="player1"></strong><br>
+        <span style="font-style: italic">(player O)</span><br><br>
+        <span id="0">score:<span></span></span>
+      </div>
+      <div class="counter">
+        <strong>Tie</strong><br><br><br>
+        <span id="2"><span></span></span>
+      </div>
+      <div class="counter">
+        <strong class="player2"></strong><br>
+        <span style="font-style: italic">(player X)</span><br><br>
+        <span id="1">score:<span></span></span>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="under">
+      <button id="newgame" type="button" name="button">New Game</button>
+    </div>
+  </div>
+  <div id="menu">
+    <center>
+      <div class="title">
+        <h1>Tic Tac Toe</h1>
+      </div>
+
+      <div class="input-container">
+        <section class="content bgcolor-10">
+          <span class="input input--shoko">
+            <input class="input__field input__field--shoko" type="text" id="input-4" />
+            <label class="input__label input__label--shoko" for="input-4">
+              <span class="input__label-content input__label-content--shoko">Player O</span>
+            </label>
+            <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+              <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+              <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
+            </svg>
+          </span>
+
+          <span id="radio1" class="button-bar input--shoko">
+            <div class="fake-button small-button" data-ptype1="A.I.">
+              <img class="player small-img gray-filter" src="images/icon-comp.png" alt="" />
+            </div>
+            <div class="fake-button small-button" data-ptype1="Human">
+              <img class="player small-img gray-filter" src="images/icon-user.png" alt="" />
+            </div>
+          </span>
+
+        </section>
+        <section class="content bgcolor-10">
+          <span class="input input--shoko">
+            <input class="input__field input__field--shoko" type="text" id="input-5" />
+            <label class="input__label input__label--shoko" for="input-5">
+              <span class="input__label-content input__label-content--shoko">Player X</span>
+            </label>
+            <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+              <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+              <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
+            </svg>
+          </span>
+
+          <span id="radio2" class="button-bar  input--shoko">
+            <div class="fake-button small-button"data-ptype2="A.I.">
+              <img class="player small-img gray-filter" src="images/icon-comp.png" alt="" />
+            </div>
+            <div class="fake-button small-button" data-ptype2="Human">
+              <img class="player small-img gray-filter" src="images/icon-user.png" alt="" />
+            </div>
+          </span>
+
+        </section>
+      </div>
+
+      <div class="firstMove-bar">
+        <h2>Pick who's first.</h2>
+        <span id="radio3" class="button-bar  input--shoko">
+          <div class="fake-button" data-firstmove="0">
+            <img class="gray-filter" src="images/note.jpg" alt="" />
+          </div>
+          <div class="fake-button" data-firstmove="1">
+            <img class="gray-filter" src="images/cross.jpg" alt="" />
+          </div>
+          <div class="fake-button" data-firstmove="2">
+            <img class="gray-filter" src="images/random.jpg" alt="" />
+          </div>
+        </span>
+      </div>
+
+      <div class="startGame">
+        <div class="fake-button">
+          <h2 id="startGame">Start Game >></h2>
+        </div>
+      </div>
+
+    </center>
+  </div>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/modernizr.custom.79639.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+  // Script for input field.
+    (function() {
+      // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+      if (!String.prototype.trim) {
+        (function() {
+          // Make sure we trim BOM and NBSP
+          var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+          String.prototype.trim = function() {
+            return this.replace(rtrim, '');
+          };
+        })();
+      }
+
+      [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+        // in case the input is already filled..
+        if( inputEl.value.trim() !== '' ) {
+          classie.add( inputEl.parentNode, 'input--filled' );
+        }
+
+        // events:
+        inputEl.addEventListener( 'focus', onInputFocus );
+        inputEl.addEventListener( 'blur', onInputBlur );
+      } );
+
+      function onInputFocus( ev ) {
+        classie.add( ev.target.parentNode, 'input--filled' );
+      }
+
+      function onInputBlur( ev ) {
+        if( ev.target.value.trim() === '' ) {
+          classie.remove( ev.target.parentNode, 'input--filled' );
+        }
+      }
+    })();
+  </script>
+  <script type="text/javascript">
+			// script for dropdown.
+			function DropDown(el) {
+				this.dd = el;
+				this.placeholder = this.dd.children('span');
+				this.opts = this.dd.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text('BOARD SIZE: ' + obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#dd') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-1').removeClass('active');
+				});
+
+			});
+
+		</script>
+</body>
+</html>
