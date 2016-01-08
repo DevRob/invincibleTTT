@@ -8,7 +8,7 @@ You need to select player type for both player (A.I. / Human) and also need to s
 
 The files has been compressed, but you can find readable commented version of the code, 
 
-breaked dovw to modules in in the [Dev folder](https://github.com/DevRob/invincibleTTT/tree/master/Dev)
+breaked down to modules in the [Dev folder](https://github.com/DevRob/invincibleTTT/tree/master/Dev)
 
 Check out the working [demo](http://devrob.github.io/invincibleTTT/) here. 
 
