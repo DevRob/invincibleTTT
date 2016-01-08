@@ -546,9 +546,10 @@ $(function() {
      var settings = {
        boardSize: checkSettings.boardSize,
        player1: [checkSettings.player1Type, $('#input-4').val()],
-       player2: [checkSettings.player1Type, $('#input-5').val()],
+       player2: [checkSettings.player2Type, $('#input-5').val()],
        firstMove: checkSettings.firstMove
      };
+     console.log(checkSettings);
 
      for (option in checkSettings) {
        // Check if game options properly set.
