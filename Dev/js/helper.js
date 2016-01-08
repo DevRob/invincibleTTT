@@ -7,17 +7,17 @@ Number.prototype.mod = function(number) {
    *    operator and it does not work with negative numbers.
    */
  return ((this % number) + number) % number;
-}
+};
 
 Array.prototype.extend = function(array) {
   // Extend an Array with another one.
   this.push.apply(this, array);
-}
+};
 
 Array.prototype.last = function(){
   // Return the last element of the array
   return this[this.length - 1];
-}
+};
 
 Math.randomChoice = function (array) {
   // Pick a random item from an array.
