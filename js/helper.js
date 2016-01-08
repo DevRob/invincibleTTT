@@ -1,0 +1,1 @@
+function allItemMatrix(t,r,n){for(var o=[],e=0;r>e;e++){o.push([]);for(var a=0;n>a;a++)o[e].push(t)}return o}Number.prototype.mod=function(t){return(this%t+t)%t},Array.prototype.extend=function(t){this.push.apply(this,t)},Array.prototype.last=function(){return this[this.length-1]},Math.randomChoice=function(t){return t[parseInt(Math.floor(Math.random()*t.length))]};
