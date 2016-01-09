@@ -1,3 +1,6 @@
+/**
+* All modules wrapper in one js file.
+*/
 $(function() {
   /**
   * Collection of general helper functions not related to the game itself.
