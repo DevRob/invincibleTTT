@@ -194,7 +194,7 @@ $(function() {
   }
 
   /**
-   * Game and Player constructor.
+   * Game and Player constructors.
    */
   var Player = function(player) {
     /**
@@ -315,9 +315,12 @@ $(function() {
      function getEndPoints(winLineIdx) {
        // Get the coordinates of the winner-line's endpoints.
        var calc = {
-         0: [[winLineIdx, 0],[winLineIdx, dim-1]],
-         1: [[0, winLineIdx.mod(dim)],[dim-1, winLineIdx.mod(dim)]],
-         2: [[(winLineIdx-2*dim)*(dim-1), 0],[((winLineIdx-2*dim+1).mod(2))*(dim-1), dim-1]]
+         0: [[winLineIdx, 0],[winLineIdx, dim - 1]],
+         1: [[0, winLineIdx.mod(dim)],[dim - 1, winLineIdx.mod(dim)]],
+         2: [
+            [(winLineIdx - 2 * dim) * (dim - 1), 0],
+            [((winLineIdx - 2 * dim + 1).mod(2)) * (dim - 1), dim - 1]
+          ]
        };
        return calc[parseInt(winLineIdx / dim)];
      }
@@ -420,7 +423,7 @@ $(function() {
    }
 
    /**
-   * Main app dealing with game loop, menu items and manipulating DOM elements.
+   * Main modul dealing with game loop, menu items and manipulating DOM elements.
    */
    var canvas = document.getElementById('canvas');
    var menu = document.getElementById('menu');
@@ -509,7 +512,7 @@ $(function() {
 
      function aiMove() {
        /**
-        * A.I. move // TODO: alpha/beta pruning,
+        * A.I. move 
         */
        var bestmove = {};
 
@@ -547,7 +550,6 @@ $(function() {
        player2: [checkSettings.player2Type, $('#input-5').val()],
        firstMove: checkSettings.firstMove
      };
-     console.log(checkSettings);
 
     for (var option in checkSettings) {
       // Check if game options properly set.

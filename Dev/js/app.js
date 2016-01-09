@@ -89,7 +89,7 @@ function startGame() {
 
   function aiMove() {
     /**
-     * A.I. move // TODO: alpha/beta pruning,
+     * A.I. move
      */
     var bestmove = {};
 
