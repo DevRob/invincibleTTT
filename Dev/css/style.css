@@ -99,7 +99,7 @@ strong {
   background-color: #dee1e3;
   display: inline-block;
   margin: 0 auto;
-  width: 33%;
+  width: 32%;
 }
 
 .under {
@@ -116,7 +116,8 @@ strong {
 .fake-button {
   width: 65px;
   height: 65px;
-  display:inline-flex;
+  margin: 0 auto;
+  display:inline-block;
   margin-top: 1.2em;
   padding: 10px;
 }
