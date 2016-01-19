@@ -87,7 +87,7 @@ function loadSettings() {
     player1: {type: checkSettings.player1Type, name: player1Name},
     player2: {type: checkSettings.player2Type, name: player2Name},
     firstMove: checkSettings.firstMove
-  }
+  };
 }
 
 $(function() {

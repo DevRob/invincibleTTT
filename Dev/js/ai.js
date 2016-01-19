@@ -10,7 +10,7 @@ function score(checkWin, depth) {
     0: {score: (depth - score)},
     1: {score: (score - depth)},
     2: {score: 0}
-  }
+  };
   return scoreTable[checkWin];
 }
 
@@ -31,7 +31,7 @@ function minMaxMove(board, player, depth) {
         move: empties[i]
       });
     }
-    return getBestMove(moves, player)
+    return getBestMove(moves, player);
   }
 }
 
