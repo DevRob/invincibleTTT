@@ -134,6 +134,8 @@ GUI.prototype.hideMenu = function() {
 
 GUI.prototype.showScoreScreen = function() {
   this.scoreScreen.style.display = "block";
+  $('.player1').text(game.players[0].playerName);
+  $('.player2').text(game.players[1].playerName);
   return this;
 };
 
