@@ -22,12 +22,13 @@ GUI.prototype.updateBoard = function () {
     }
   });
   self.drawWin();
-}
+};
 
 GUI.prototype.drawBoard = function() {
   var canvasSize = window.innerHeight * 0.6;
   this.canvas.width = this.canvas.height = canvasSize;
   this.squareSize = canvasSize / 3;
+  var start, end;
   for (var i = 1; i < BOARDSIZE; i++) {
     start = [this.squareSize * i, 0];
     end = [this.squareSize * i, canvasSize];
@@ -37,13 +38,13 @@ GUI.prototype.drawBoard = function() {
       end.reverse();
     }
   }
-}
+};
 
 GUI.prototype.drawNought = function(index) {
   var radius = this.squareSize / 4;
   var position = this.getCoord(index);
   this.circle(position, radius, DARKGREY, this.squareSize / 10);
-}
+};
 
 GUI.prototype.drawCross = function(index) {
   var size = this.squareSize / 3;
@@ -52,7 +53,7 @@ GUI.prototype.drawCross = function(index) {
   var end = [position.y + size, position.x];
   this.line(start, end, 45, BLUE, this.squareSize / 10);
   this.line(start, end, 135, BLUE, this.squareSize / 10);
-}
+};
 
 GUI.prototype.drawWin = function() {
   var line;
@@ -61,16 +62,14 @@ GUI.prototype.drawWin = function() {
     line = this.buildLine(this.winLineProp(winner.line));
     this.line(line.start, line.end, line.angle, GREY, this.squareSize / 7);
   }
-}
+};
 
 GUI.prototype.buildLine = function(line) {
   var midPoint = this.getCoord(line.midpoint);
-  var scale = line.scale;
-  var angle = line.angle;
   var start = [midPoint.y - this.squareSize * line.scale, midPoint.x];
   var end = [midPoint.y + this.squareSize * line.scale, midPoint.x];
-  return {start: start, end: end, angle: angle};
-}
+  return {start: start, end: end, angle: line.angle};
+};
 
 GUI.prototype.winLineProp = function (index) {
   var properties = {
@@ -82,9 +81,9 @@ GUI.prototype.winLineProp = function (index) {
     5: {midpoint: 5, scale: 1.1, angle: 88},
     6: {midpoint: 4, scale: 1.5, angle: 47},
     7: {midpoint: 4, scale: 1.5, angle: 132}
-  }
+  };
   return properties[index];
-}
+};
 
 GUI.prototype.line = function(start, end, angle, color, width) {
   /** can rotate a horizontal line by angle set @param {number} - angle */
@@ -99,7 +98,7 @@ GUI.prototype.line = function(start, end, angle, color, width) {
   ctx.lineCap="round";
   ctx.lineWidth = width;
   ctx.stroke();
-}
+};
 
 GUI.prototype.circle = function(position, radius, color, width) {
   var ctx = this.ctx;
@@ -108,35 +107,35 @@ GUI.prototype.circle = function(position, radius, color, width) {
   ctx.strokeStyle = color;
   ctx.lineWidth = width;
   ctx.stroke();
-}
+};
 
 GUI.prototype.getCoord = function(squareIndex) {
  return {
    x: this.squareSize * (parseInt(squareIndex / 3) + 0.5),
    y: this.squareSize * ((squareIndex % 3) + 0.5)
  };
-}
+};
 
 GUI.prototype.getSquareIndex = function(coord) {
   var row = parseInt(coord.offsetY / this.squareSize);
   var col = parseInt(coord.offsetX / this.squareSize);
   return row * 3 + col;
-}
+};
 
 GUI.prototype.clearCanvas = function () {
-  this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   return this;
-}
+};
 
 GUI.prototype.hideMenu = function() {
   this.menu.style.display = "none";
   return this;
-}
+};
 
 GUI.prototype.showScoreScreen = function() {
   this.scoreScreen.style.display = "block";
   return this;
-}
+};
 
 GUI.prototype.refreshCounter = function() {
   var counter = this.winnerCount;
@@ -145,12 +144,12 @@ GUI.prototype.refreshCounter = function() {
   $('#1').children('span').text(counter[1]);
   $('#2').children('span').text(counter[2]);
   return this;
-}
+};
 
 GUI.prototype.smoothening = function () {
-  ctx = this.ctx;
+  var ctx = this.ctx;
   ctx.mozImageSmoothingEnabled = true;
   ctx.msImageSmoothingEnabled = true;
   ctx.imageSmoothingEnabled = true;
   return this;
-}
+};

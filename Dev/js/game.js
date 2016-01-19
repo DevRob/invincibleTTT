@@ -35,16 +35,16 @@ Game.prototype.setFirstPlayer = function(firstMove) {
 
 Game.prototype.switchPlayer = function() {
  this.currentPlayer = nextPlayer(this.currentPlayer);
-}
+};
 
 Game.prototype.inProgress = function() {
   var winner = this.board.checkWin().player;
   if (winner === null) {
     return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
  Game.prototype.resetGame = function() {
    this.board = new Board();
@@ -53,8 +53,8 @@ Game.prototype.inProgress = function() {
 
  Game.prototype.getPlayerType = function() {
    return this.players[this.currentPlayer].playerType;
- }
+ };
 
  function randomChoice(array) {
    return array[parseInt(Math.floor(Math.random() * array.length))];
- };
+ }
