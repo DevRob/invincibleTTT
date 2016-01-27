@@ -57,9 +57,9 @@ GUI.prototype.drawCross = function(index) {
 
 GUI.prototype.drawWin = function() {
   var line;
-  var winner = this.game.board.checkWin();
-  if (winner.player == PLAYERO || winner.player == PLAYERX) {
-    line = this.buildLine(this.winLineProp(winner.line));
+  var gameState = this.game.board.checkWin();
+  if (gameState.result == PLAYERO || gameState.result == PLAYERX) {
+    line = this.buildLine(this.winLineProp(gameState.line));
     this.line(line.start, line.end, line.angle, GREY, this.squareSize / 7);
   }
 };
@@ -134,18 +134,22 @@ GUI.prototype.hideMenu = function() {
 
 GUI.prototype.showScoreScreen = function() {
   this.scoreScreen.style.display = "block";
-  $('.player1').text(game.players[0].playerName);
-  $('.player2').text(game.players[1].playerName);
   return this;
 };
 
 GUI.prototype.refreshCounter = function() {
   var counter = this.winnerCount;
-  counter[this.game.board.checkWin().player] += 1;
+  counter[this.game.board.checkWin().result] += 1;
   $('#0').children('span').text(counter[0]);
   $('#1').children('span').text(counter[1]);
   $('#2').children('span').text(counter[2]);
   return this;
+};
+
+GUI.prototype.drawPlayerName = function() {
+  $('.player1').text(game.players[0].playerName);
+  $('.player2').text(game.players[1].playerName);
+  return
 };
 
 GUI.prototype.smoothening = function () {

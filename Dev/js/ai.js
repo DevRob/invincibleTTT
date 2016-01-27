@@ -18,7 +18,7 @@ function minMaxMove(board, player, depth) {
   depth += 1;
   var moves = [], cloneBoard = {};
   var empties = board.getEmptySquares();
-  var checkWin = board.checkWin().player;
+  var checkWin = board.checkWin().result;
 
   if (checkWin !== null) {
     return score(checkWin, depth);

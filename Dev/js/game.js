@@ -38,12 +38,7 @@ Game.prototype.switchPlayer = function() {
 };
 
 Game.prototype.inProgress = function() {
-  var winner = this.board.checkWin().player;
-  if (winner === null) {
-    return true;
-  } else {
-    return false;
-  }
+  return this.board.checkWin().result === null;
 };
 
  Game.prototype.resetGame = function() {
